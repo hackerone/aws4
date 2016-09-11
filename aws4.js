@@ -1,9 +1,9 @@
-var aws4 = exports,
-    url = require('url'),
-    querystring = require('querystring'),
-    crypto = require('crypto'),
-    lru = require('./lru'),
-    credentialsCache = lru(1000)
+import url from 'url';
+import querystring from 'querystring';
+import crypto from 'crypto';
+import lru from './lru';
+
+const credentialsCache = lru(1000);
 
 // http://docs.amazonwebservices.com/general/latest/gr/signature-version-4.html
 
@@ -316,3 +316,6 @@ aws4.RequestSigner = RequestSigner
 aws4.sign = function(request, credentials) {
   return new RequestSigner(request, credentials).sign()
 }
+
+
+export default aws4;
